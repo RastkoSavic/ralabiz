@@ -3,7 +3,12 @@
 
 @section('content')
 <div class="card">
-   <div class="card-header">Create Listing</div>
+   <div class="card-header clearfix">
+      Create Listing
+      <span class="float-right">
+         <a href="/dashboard" class="btn btn-primary btn-sm">Go Back</a>
+      </span>
+   </div>
 
    <div class="card-body">
       {!! Form::open(['action' => 'ListingsController@store', 'method' => 'POST']) !!}
