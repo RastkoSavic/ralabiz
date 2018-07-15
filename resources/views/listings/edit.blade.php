@@ -18,8 +18,8 @@
          {{ Form::bsText('phone', $listing->phone, ['placeholder' => 'Contact Phone']) }}
          {{ Form::bsText('address', $listing->address, ['placeholder' => 'Business Address']) }}
          {{ Form::bsTextArea('bio', $listing->bio, ['placeholder' => 'About This Business']) }}
-         {{ Form::bsSubmit('submit', ['class' => 'btn btn-primary float-right']) }}
          {{ Form::hidden('_method', 'PUT') }}
+         {{ Form::bsSubmit('submit', ['class' => 'btn btn-primary float-right']) }}
       {!! Form::close() !!}
    </div>
 </div>
