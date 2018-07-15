@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// Listing Model
+use App\Listing;
+
 // Listings Controller CRUD
 class ListingsController extends Controller
 {
@@ -24,7 +27,7 @@ class ListingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('listings.create');
     }
 
     /**
@@ -35,7 +38,26 @@ class ListingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate Data
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'email'
+        ]);
+        
+        // Create New Listing
+        $listing = new Listing;
+        $listing->name = $request->input('name');
+        $listing->website = $request->input('website');
+        $listing->email = $request->input('email');
+        $listing->phone = $request->input('phone');
+        $listing->address = $request->input('address');
+        $listing->bio = $request->input('bio');
+        $listing->user_id = auth()->user()->id;
+
+        // Save Listing
+        $listing->save();
+
+        return redirect('/dashboard')->with('success', 'Listing Added');
     }
 
     /**
