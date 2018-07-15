@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// Listings Controller CRUD
 class ListingsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of Listings.
      *
      * @return \Illuminate\Http\Response
      */
@@ -17,7 +18,7 @@ class ListingsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Listing.
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +28,7 @@ class ListingsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Listing in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,7 +39,7 @@ class ListingsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Listing.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -49,7 +50,7 @@ class ListingsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Listing.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -60,7 +61,7 @@ class ListingsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Listing in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -72,7 +73,7 @@ class ListingsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Listing from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

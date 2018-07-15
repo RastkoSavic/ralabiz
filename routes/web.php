@@ -11,10 +11,15 @@
 |
 */
 
+// Base Routes
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication Routes
 Auth::routes();
 
+Route::resource('listings', 'ListingsController');
+
+// Dashboard Route
 Route::get('/dashboard', 'DashboardController@index');
