@@ -12,13 +12,12 @@
 */
 
 // Base Routes
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ListingsController@index');
 
 // Authentication Routes
 Auth::routes();
 
+// Listings Routes
 Route::resource('listings', 'ListingsController');
 
 // Dashboard Route

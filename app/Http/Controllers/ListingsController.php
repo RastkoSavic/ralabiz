@@ -10,6 +10,12 @@ use App\Listing;
 // Listings Controller CRUD
 class ListingsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of Listings.
      *
@@ -17,7 +23,10 @@ class ListingsController extends Controller
      */
     public function index()
     {
-        //
+        // Get All Listings
+        $listings = Listing::orderBy('created_at', 'desc')->get();
+
+        return view('listings.index')->with('listings', $listings);
     }
 
     /**
@@ -68,7 +77,10 @@ class ListingsController extends Controller
      */
     public function show($id)
     {
-        //
+        // Get listing
+        $listing = Listing::find($id);
+
+        return view('listings.show')->with('listing', $listing);
     }
 
     /**
@@ -81,6 +93,11 @@ class ListingsController extends Controller
     {
         // Get listing
         $listing = Listing::find($id);
+
+        // Check for correct User
+        if (auth()->user()->id !== $listing->user_id) {
+            return redirect('/listings')->with('error', 'Unauthorized Page');
+        }
 
         return view('listings.edit')->with('listing', $listing);
     }
@@ -126,8 +143,14 @@ class ListingsController extends Controller
      */
     public function destroy($id)
     {
+
         // Get Listing
         $listing = Listing::find($id);
+
+        // Check for correct User
+        if (auth()->user()->id !== $listing->user_id) {
+            return redirect('/listings')->with('error', 'Unauthorized Page');
+        }
 
         // Delete Listing
         $listing->delete();
